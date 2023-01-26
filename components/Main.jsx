@@ -20,7 +20,7 @@ const Main = () => {
           </h1>
           <p className="py-4 text-[var(--color-text-secondary)] max-w-[70%] m-auto">
             My current interest is learning web development. In which I
-            specialize in front-end frameworks, while also learning back-end
+            specialize in front-end frameworks, whilst also learning back-end
             technologies.
           </p>
 
