@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Alex Cheng</title>
-        <link rel="icon" href="/assets/favicon-light.png" />
+        <link rel="icon" href="/assets/icons/favicon-light.png" />
       </Head>
       <Main />
     </div>
