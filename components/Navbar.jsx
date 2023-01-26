@@ -13,7 +13,7 @@ const Navbar = () => {
     <div className="fixed w-full h-20 shadow-xl z-[100]">
       <div className="flex justify-between items-center w-full h-full px-6 mr-4 2xl:px-10 ">
         <Image
-          src="/../public/assets/logo-light.png"
+          src="/assets/logo-light.png"
           alt="logo"
           width="100"
           height="100"
