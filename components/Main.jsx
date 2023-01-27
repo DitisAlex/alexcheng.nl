@@ -1,6 +1,7 @@
 import React from "react";
 import { AiFillMail } from "react-icons/ai";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+
 const Main = () => {
   return (
     <div className="w-full h-screen text-center">
