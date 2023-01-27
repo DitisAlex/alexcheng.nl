@@ -2,24 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer base {
     :root {
-        --color-primary: #758BFD;
-        --color-secondary: #27187E;
-        --color-text: #333333;
-        --color-text-secondary: #474747;
-        --color-bg: #F1F2F6;
+        /*
+        / General colors
+        */
+        --color-primary: #6e85f7;
+        --color-secondary: #124d91;
         --color-highlight: #C89933; 
+
+        /*
+        / Light mode colors
+        */
+        --color-bg-light: #E0E0E0;
+        --color-text-light: #333333;
+        --color-text-secondary-light: #474747;
+
+        /*
+        / Dark mode colors
+        */
+        --color-bg-dark: #141414;
+        --color-text-dark: #E0E0E0;
+        --color-text-secondary-dark: #CED4DA;
     }
+
+    [class='light']{
+        @apply bg-[var(--color-bg-light)] transition-colors duration-1000;
+    }
+
+    [class='dark']{
+        @apply bg-[var(--color-bg-dark)] transition-colors duration-1000;
+    }
+
     body {
-        @apply bg-[var(--color-bg)] text-[var(--color-text)] tracking-wide
+        @apply text-[var(--color-text)] tracking-wide
     }
 
     h1, h2, h3, h4, h5, h6 {
         @apply font-bold
     }
+    
 
     h1 {
         @apply text-4xl sm:text-5xl md:text-6xl
@@ -34,6 +56,6 @@
     }
 
     button {
-        @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white
+        @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[var(--color-primary-light)] to-[var(--color-secondary-light)] text-white
     }
 }

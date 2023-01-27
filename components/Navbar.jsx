@@ -3,15 +3,34 @@ import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose, AiFillMail } from "react-icons/ai";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const [toggleNav, setToggleNav] = useState(false);
   const handleToggleNav = () => {
     setToggleNav(!toggleNav);
   };
+
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  const handleChangeTheme = () => {
+    if (theme === "light" || theme === "system") setTheme("dark");
+    else if (theme === "dark") setTheme("light");
+  };
+
   return (
     <div className="fixed w-full h-20 shadow-xl z-[100]">
-      <div className="flex justify-between items-center w-full h-full px-6 mr-4 2xl:px-10 ">
+      <div className="flex justify-between items-center w-full h-full px-6 mr-4 2xl:px-10">
         <Image
           src="/assets/logo-light.png"
           alt="logo"
@@ -40,6 +59,16 @@ const Navbar = () => {
               Contact
             </li>
           </Link>
+          <li
+            className="ml-10 hover:text-[var(--color-highlight)] hover:scale-110 ease-in duration-300"
+            onClick={handleChangeTheme}
+          >
+            {theme === "light" ? (
+              <MdOutlineDarkMode size={25} />
+            ) : (
+              <MdOutlineLightMode size={25} />
+            )}
+          </li>
         </ul>
         <div
           onClick={handleToggleNav}
@@ -59,7 +88,7 @@ const Navbar = () => {
         <div
           className={
             toggleNav
-              ? "fixed left-0 top-0 w-[70%] sm:w-[65%] h-screen bg-[var(--color-bg)] p-10 ease-in duration-500"
+              ? "fixed left-0 top-0 w-[70%] sm:w-[65%] h-screen bg-[var(--color-bg-light)] dark:bg-[var(--color-bg-dark)] p-10 ease-in duration-500"
               : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
           }
         >
@@ -71,6 +100,13 @@ const Navbar = () => {
                 width="85"
                 height="85"
               />
+              <div className="rounded-full shadow-lg shadow-gray-400 p-2 mr-4 cursor-pointer hover:scale-110 ease-in duration-150">
+                {theme === "light" ? (
+                  <MdOutlineDarkMode onClick={handleChangeTheme} size={20} />
+                ) : (
+                  <MdOutlineLightMode onClick={handleChangeTheme} size={20} />
+                )}
+              </div>
               <div className="rounded-full shadow-lg shadow-gray-400 p-2 mr-4 cursor-pointer hover:scale-110 ease-in duration-150">
                 <AiOutlineClose onClick={handleToggleNav} size={20} />
               </div>
@@ -99,7 +135,7 @@ const Navbar = () => {
                 </Link>
               </ul>
               <div className="pt-40">
-                <p className="uppercase tracking-widest text-[var(--color-primary)] ">
+                <p className="uppercase tracking-widest text-[var(--color-secondary)] dark:text-[var(--color-primary)]">
                   Lets stay in touch!
                 </p>
                 <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
