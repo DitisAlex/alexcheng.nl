@@ -29,7 +29,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed w-full h-20 shadow-xl z-[100] translate-y-0">
+    <div className="fixed w-full h-20 shadow-xl z-[100] transform translate-y-0 translate-x-0">
       <div className="flex justify-between items-center w-full h-full px-6 mr-4 2xl:px-10">
         <Image
           src="/assets/logo-light.png"
