@@ -27,11 +27,11 @@
     }
 
     [class='light']{
-        @apply bg-[var(--color-bg-light)] transition-colors duration-1000;
+        @apply bg-[var(--color-bg-light)] transition-colors duration-500;
     }
 
     [class='dark']{
-        @apply bg-[var(--color-bg-dark)] transition-colors duration-1000;
+        @apply bg-[var(--color-bg-dark)] transition-colors duration-500;
     }
 
     body {
