@@ -4,7 +4,7 @@ import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 
 const Main = () => {
   return (
-    <div className="w-full h-screen text-center z-[1]">
+    <div className="w-full h-screen text-center">
       <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
         <div>
           <h1 className="py-4 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
