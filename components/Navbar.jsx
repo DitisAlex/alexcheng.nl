@@ -88,8 +88,8 @@ const Navbar = () => {
         <div
           className={
             toggleNav
-              ? "fixed left-0 top-0 w-[70%] sm:w-[65%] h-screen bg-[var(--color-bg-light)] dark:bg-[var(--color-bg-dark)] p-10 ease-in duration-500"
-              : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
+              ? "fixed left-0 top-0 w-[70%] sm:w-[65%] h-screen bg-[var(--color-bg-light)] dark:bg-[var(--color-bg-dark)] p-10 ease-in duration-300"
+              : "fixed left-[-100%] top-0 p-10 ease-in duration-300"
           }
         >
           <div>
