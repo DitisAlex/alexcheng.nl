@@ -14,7 +14,7 @@
         /*
         / Light mode colors
         */
-        --color-bg-light: #E0E0E0;
+        --color-bg-light: #FFFDFA;
         --color-text-light: #333333;
         --color-text-secondary-light: #474747;
 
@@ -22,7 +22,7 @@
         / Dark mode colors
         */
         --color-bg-dark: #141414;
-        --color-text-dark: #E0E0E0;
+        --color-text-dark: #FFFDFA;
         --color-text-secondary-dark: #CED4DA;
     }
 
