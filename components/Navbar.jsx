@@ -39,7 +39,7 @@ const Navbar = () => {
           className="hover:scale-125 ease-in duration-300"
         />
         <ul className="hidden md:flex">
-          <Link href="/">
+          <Link href="#about">
             <li className="ml-10 text-l uppercase hover:text-[var(--color-highlight)]">
               About Me
             </li>
@@ -49,7 +49,7 @@ const Navbar = () => {
               Experience
             </li>
           </Link>
-          <Link href="/">
+          <Link href="#projects">
             <li className="ml-10 text-l uppercase hover:text-[var(--color-highlight)]">
               Projects
             </li>
