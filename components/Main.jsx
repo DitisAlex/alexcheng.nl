@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { AiFillMail } from "react-icons/ai";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 
@@ -12,7 +13,7 @@ const Main = () => {
             <span className="text-[var(--color-primary)]">Alex Cheng</span>
           </h1>
           <h1 className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            Focussed on{" "}
+            Focused on{" "}
             <span className="text-[var(--color-secondary)]">
               {" "}
               Web Development
@@ -25,15 +26,21 @@ const Main = () => {
           </p>
 
           <div className="flex items-center justify-between max-w-[330px] m-auto py-4">
-            <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-150">
-              <FaGithub size={25} />
-            </div>
-            <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-150">
-              <FaLinkedinIn size={25} />
-            </div>
-            <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-150">
-              <AiFillMail size={25} />
-            </div>
+            <Link href="https://github.com/ditisalex">
+              <div className="rounded-full shadow-md shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-150">
+                <FaGithub size={25} />
+              </div>
+            </Link>
+            <Link href="https://www.linkedin.com/in/ditisalex/">
+              <div className="rounded-full shadow-md shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-150">
+                <FaLinkedinIn size={25} />
+              </div>
+            </Link>
+            <Link href="mailto:chengalex777@gmail.com">
+              <div className="rounded-full shadow-md shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-150">
+                <AiFillMail size={25} />
+              </div>
+            </Link>
           </div>
         </div>
       </div>

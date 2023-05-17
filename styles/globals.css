@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    scroll-behavior: smooth;
-}
-
 @layer base {
     :root {
         /*
@@ -31,11 +27,16 @@ html {
     }
 
     [class='light']{
-        @apply bg-[var(--color-bg-light)] transition-colors duration-500;
+        @apply bg-[var(--color-bg-light)] transition-colors ease-in duration-300;
     }
 
     [class='dark']{
-        @apply bg-[var(--color-bg-dark)] transition-colors duration-500;
+        @apply bg-[var(--color-bg-dark)] transition-colors ease-in duration-300;
+    }
+
+    html {
+        --scroll-behavior: smooth !important;
+        scroll-behavior: smooth !important;
     }
 
     body {
