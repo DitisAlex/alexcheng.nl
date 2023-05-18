@@ -159,7 +159,7 @@ const Navbar = () => {
                 </Link>
               </ul>
               <div className="pt-40">
-                <p className="uppercase tracking-widest text-[var(--color-secondary)] dark:text-[var(--color-primary)]">
+                <p className="uppercase tracking-widest text-[var(--color-primary)]">
                   Lets stay in touch!
                 </p>
                 <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">

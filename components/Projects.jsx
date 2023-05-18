@@ -13,7 +13,7 @@ const Projects = () => {
         Projects
       </p>
       <h2 className="py-4">What Have I Built?</h2>
-      <div className="grid gap-8">
+      <div className="grid grid-cols-2 gap-8">
         <ProjectItem
           title="Inside AirBNB"
           toolstack="React.js / Mapbox.js / Charts.js / ASP.NET Core / Azure Services"

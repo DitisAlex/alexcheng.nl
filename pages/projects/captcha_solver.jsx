@@ -60,19 +60,13 @@ const captcha_solver = () => {
             the full working demo below as well.
           </p>
           <Link href="/#projects">
-            <button className="px-8 py-2 mt-4 mr-4 shadow-md shadow-gray-400 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] hover:text-[var(--color-highlight)] dark:hover:text-[var(--color-highlight)]">
-              Back
-            </button>
+            <button className="px-8 py-2 mt-4 mr-4">Back</button>
           </Link>
           <Link href="https://github.com/DitisAlex/captcha-solver">
-            <button className="px-8 py-2 mt-4 mr-4 shadow-md shadow-gray-400 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] hover:text-[var(--color-highlight)] dark:hover:text-[var(--color-highlight)]">
-              Code
-            </button>
+            <button className="px-8 py-2 mt-4 mr-4">Code</button>
           </Link>
           <Link href="https://colab.research.google.com/drive/1JlLNy03KpM_E9oyB9TpQ-CFjR9vNj93i?usp=sharing">
-            <button className="px-8 py-2 mt-4 shadow-md shadow-gray-400 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] hover:text-[var(--color-highlight)] dark:hover:text-[var(--color-highlight)]">
-              Demo
-            </button>
+            <button className="px-8 py-2 mt-4">Demo</button>
           </Link>
         </div>
         <div className="col-span-4 md:col-span-1 shadow-lg shadow-gray-400 rounded-xl p-4">

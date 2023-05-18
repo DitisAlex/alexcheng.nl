@@ -61,6 +61,10 @@
     }
 
     button {
-        @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[var(--color-primary-light)] to-[var(--color-secondary-light)] text-white
+        @apply shadow-md shadow-gray-400 rounded-xl uppercase  text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] hover:text-[var(--color-highlight)] dark:hover:text-[var(--color-highlight)]
+    }
+
+    textarea {
+        resize: none
     }
 }
