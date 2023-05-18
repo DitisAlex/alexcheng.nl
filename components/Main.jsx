@@ -20,9 +20,9 @@ const Main = () => {
             </span>
           </h1>
           <p className="py-4 text-[var(--color-text-secondary-light)] dark:text-[var(--color-text-secondary-dark)] max-w-[70%] m-auto">
-            My current interest is learning web development. In which I
-            specialize in front-end frameworks, whilst also learning back-end
-            technologies.
+            My current interest lies in learning web development, with a
+            specialization in front-end frameworks, while also expanding my
+            knowledge of back-end technologies.
           </p>
 
           <div className="flex items-center justify-between max-w-[330px] m-auto py-4">

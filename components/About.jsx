@@ -14,21 +14,21 @@ const About = () => {
           </p>
           <h2 className="py-4">Who Am I?</h2>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            At a very young age I realised I had an interest for working with
-            computers and technology in general. So after I finished secondary
-            school, at the age of 16, I immediately started my study "HBO-ICT"
-            at the HAN University of Applied Sciences.
+            At a very young age, I realized my interest in working with
+            computers and technology in general. So, right after finishing
+            secondary school at the age of 16, I immediately started studying
+            "HBO-ICT" at the HAN University of Applied Sciences.
           </p>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            During this time I have learned many different technologies, but one
-            stood out to me: Web Development. I simply love that this career is
-            always centered on creative problem-solving and constant
-            innovations.
+            During this time, I have learned various technologies, but one has
+            truly stood out to me: web development. I simply love that this
+            career is always centered around creative problem-solving and
+            continuous innovation.
           </p>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            Besides that, in my free time I like to be in the gym, playing video
-            games and of course spending my time to program, as I am keen on
-            learning new things everday!
+            Besides that, in my free time, I enjoy activities such as going to
+            the gym, playing video games, and, of course, dedicating time to
+            programming. I am always eager to learn new things every day!
           </p>
           <Link href="/#projects">
             <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] underline cursor-pointer hover:text-[var(--color-highlight)] dark:hover:text-[var(--color-highlight)]">

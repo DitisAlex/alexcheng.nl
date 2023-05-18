@@ -29,27 +29,27 @@ const airbnb = () => {
           <h2 className="py-4">Description</h2>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
             This was a school project for the course NOTS - Web Applications.
-            The project required developers to build their own AirBNB clone,
+            The project required developers to build their own Airbnb clone,
             with some extra features. These features were intended for the
-            management team of InsideAirBNB, which they could use to get an
+            management team of InsideAirbnb, which they could use to get an
             overview of different statistics, such as: average reviews per
-            neighbourhood, monthly income per neighbourhood, amount of
-            accomodations, etc.
+            neighborhood, monthly income per neighborhood, number of
+            accommodations, etc.
           </p>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            During this project I learned how to use several Azure Services like
-            Redis Caching, Azure AD B2C and App Service. For the front-end I
-            chose for React.js, Mapbox.js (to show the different Airbnb
-            locations) and Charts.js (to display multiple graphs). Besides that,
-            I was required to create a ASP.NET Core Web API with a MSSQL
+            During this project, I learned how to use several Azure services
+            like Redis Caching, Azure AD B2C, and App Service. For the
+            front-end, I chose React.js, Mapbox.js (to show the different Airbnb
+            locations), and Charts.js (to display multiple graphs). Besides
+            that, I was required to create an ASP.NET Core Web API with an MSSQL
             database running in Docker as the back-end. Lastly, I documented the
-            complete coding process in addition with performance tests by Apache
-            JMeter and vulnerability tests by OWASP ZAP.
+            complete coding process along with performance tests using Apache
+            JMeter and vulnerability tests using OWASP ZAP.
           </p>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
             At first this project was really challenging, due to the big variety
             of technologies being used. But after setting up a solid development
-            environment, I believe that I have done an excelent job in
+            environment, I believe that I have done an excellent job in
             fulfilling the wants and needs of the project.
           </p>
           <Link href="/#projects">

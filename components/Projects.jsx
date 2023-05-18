@@ -3,7 +3,8 @@ import ProjectItem from "./ProjectItem";
 
 import airbnbPng from "../public/assets/projects/airbnb.png";
 import laterlezenPng from "../public/assets/projects/laterlezen.png";
-import sinchenpng from "../public/assets/projects/sinchen.png";
+import sinchenPng from "../public/assets/projects/sinchen.png";
+import captchaSolver from "../public/assets/projects/captcha_solver.jpg";
 
 const Projects = () => {
   return (
@@ -27,9 +28,15 @@ const Projects = () => {
         />
         <ProjectItem
           title="SinChen"
-          toolstack="MongoDB / Express / React.js / Node.js / ReactToPrint"
-          img={sinchenpng}
+          toolstack="MongoDB / Express.js / React.js / Node.js / ReactToPrint"
+          img={sinchenPng}
           url="sinchen"
+        />
+        <ProjectItem
+          title="CAPTCHA Solver"
+          toolstack="Python / Artificial Intelligence / YOLOv5"
+          img={captchaSolver}
+          url="captcha_solver"
         />
       </div>
     </div>

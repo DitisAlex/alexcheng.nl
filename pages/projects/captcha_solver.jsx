@@ -1,24 +1,26 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import laterlezenImg from "../../public/assets/projects/laterlezen.png";
+import captchaSolver from "../../public/assets/projects/captcha_solver.jpg";
 import { RiRadioButtonFill } from "react-icons/ri";
 
-const laterlezen = () => {
+const captcha_solver = () => {
   return (
     <div className="w-full py-16">
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
-        <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/50 z-10"></div>
+        <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/80 z-10"></div>
         <Image
           className="absolute z-1"
           fill
           objectFit="cover"
-          src={laterlezenImg}
-          alt="laterlezen"
+          src={captchaSolver}
+          alt="captcha solver"
         />
         <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-[var(--color-text-dark)] z-10 p-2">
-          <h2 className="py-2">LaterLezen</h2>
-          <p>Application to bookmark articles on the internet.</p>
+          <h2 className="py-2">CAPTCHA Solver</h2>
+          <p>
+            Solve CAPTCHAs automatically with Artificial Intelligence (YOLOv5).
+          </p>
         </div>
       </div>
       <div className="max-w-[1240px] mx-auto p-2 grid md:grid-cols-5 gap-8 pt-8">
@@ -28,42 +30,48 @@ const laterlezen = () => {
           </p>
           <h2 className="py-4">Description</h2>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            This was a school project for the course DWA, together with a group
-            of five developers. Our Product Owner wanted an application to
-            bookmark articles on the internet that are read on a daily basis,
-            such as newspapers, e-books, and research papers. This application
-            needed to stand out from its existing competitors by offering
-            features like a paywall bypass, improved tagging, support for longer
-            text, compatibility with PDFs, and the ability to fetch the best
-            metadata. Additionally, the Product Owner requested that the
-            application be available both as a web application and as a browser
-            extension.
+            This was a school project for the course NOTS. Together with a group
+            of four developers, our goal was to create an AI algorithm capable
+            of solving CAPTCHAs. This meant we had to train our own model and
+            devise strategies to overcome the very purpose for which CAPTCHAs
+            were designed – to prevent such solutions.
           </p>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            During this project, I learned many useful things such as scraping
-            metadata, building a REST API with Express.js to communicate with
-            our MongoDB & Mongoose, and setting up and configuring a Google
-            Chrome extension. I also gained knowledge in solving advanced data
-            structures while implementing the tagging system. For example, I
-            worked with binary trees and used recursion to traverse the
-            different nodes within the tree. Lastly, I acquired the skills to
-            perform solid end-to-end testing using Jest, Puppeteer, and
-            Chromium.
+            While building this tool, we also had to document the entire process
+            in the form of a research paper. The paper addressed various
+            questions, including: What is Deep Learning? What Deep Learning
+            techniques are necessary to tackle this problem? What data do we
+            need to train our AI model? How much accuracy is required to
+            determine a correct letter? How can we enhance the accuracy of our
+            model? And finally, what are the ethical consequences of
+            automatically solving CAPTCHAs? This 50+ pages research paper can be
+            found on the GitHub repository below.
           </p>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            This was not only one of the biggest projects I have been a part of
-            but also one of the most educational. I thoroughly enjoyed working
-            with a diverse range of technologies to fulfill all the requirements
-            set by our Product Owner.
+            Eventually, we achieved the capability to automatically solve
+            CAPTCHAs using the YOLOv5 model. To train the model, we manually
+            labeled over 400 images using Roboflow. We then increased the
+            dataset size using data augmentation techniques. After training the
+            model for several days on powerful hardware provided by Google Colab
+            and Kaggle, the AI demonstrated high accuracy in recognizing
+            different types of CAPTCHAs. We tracked the model's performance
+            using a tool called Weights and Biases (WandB), which provided
+            insights on its performance compared to earlier runs. You can find
+            the full working demo below as well.
           </p>
           <Link href="/#projects">
             <button className="px-8 py-2 mt-4 mr-4 shadow-md shadow-gray-400 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] hover:text-[var(--color-highlight)] dark:hover:text-[var(--color-highlight)]">
               Back
             </button>
           </Link>
-          <Link href="https://github.com/DitisAlex/HAN-DWA-LaterLezen/">
-            <button className="px-8 py-2 mt-4 shadow-md shadow-gray-400 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] hover:text-[var(--color-highlight)] dark:hover:text-[var(--color-highlight)]">
+          <Link href="https://github.com/DitisAlex/captcha-solver">
+            <button className="px-8 py-2 mt-4 mr-4 shadow-md shadow-gray-400 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] hover:text-[var(--color-highlight)] dark:hover:text-[var(--color-highlight)]">
               Code
+            </button>
+          </Link>
+          <Link href="https://colab.research.google.com/drive/1JlLNy03KpM_E9oyB9TpQ-CFjR9vNj93i?usp=sharing">
+            <button className="px-8 py-2 mt-4 shadow-md shadow-gray-400 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] hover:text-[var(--color-highlight)] dark:hover:text-[var(--color-highlight)]">
+              Demo
             </button>
           </Link>
         </div>
@@ -73,43 +81,31 @@ const laterlezen = () => {
             <div className="grid grid-cols-1 md:grid-cols-1">
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                React.js
+                Python
               </p>
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                Express.js
+                Artificial Intelligence
               </p>
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                Node.js
+                YOLOv5
               </p>
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                MongoDB
+                Google Collab
               </p>
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                Mongoose
+                Kaggle
               </p>
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                Passport-jwt
+                WandB
               </p>
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                Websockets
-              </p>
-              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                Jest
-              </p>
-              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                Puppeteer
-              </p>
-              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                Chromium
+                Roboflow
               </p>
             </div>
           </div>
@@ -119,4 +115,4 @@ const laterlezen = () => {
   );
 };
 
-export default laterlezen;
+export default captcha_solver;
