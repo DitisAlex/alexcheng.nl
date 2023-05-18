@@ -98,10 +98,6 @@ const sinchen = () => {
                 <RiRadioButtonFill className="pr-1" />
                 ReactToPrint
               </p>
-              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                ReactToPrint
-              </p>
             </div>
           </div>
         </div>
