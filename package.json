@@ -6,6 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
+    "flowbite": "^1.6.5",
+    "flowbite-react": "^0.4.4",
     "next": "latest",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
