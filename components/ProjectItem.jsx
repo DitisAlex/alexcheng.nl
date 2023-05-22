@@ -11,14 +11,16 @@ const ProjectItem = ({ title, toolstack, img, url }) => {
         alt={title}
       />
       <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-        <h3 className="text-2xl tracking-wider text-center text-[var(--color-text-dark)] dark:text-[var(--color-text-light)]">
+        <h3 className="text-xl pb-2 md:text-2xl tracking-wider text-center text-[var(--color-text-dark)] dark:text-[var(--color-text-light)]">
           {title}
         </h3>
-        <p className="pb-4 pt-2 text-center text-[var(--color-text-dark)] dark:text-[var(--color-text-light)]">
+        <div className="hidden md:block">
+        <p className="pb-3 text-center text-[var(--color-text-dark)] dark:text-[var(--color-text-light)]">
           {toolstack}
         </p>
+        </div>
         <Link href={`projects/${url}`}>
-          <p className="text-center py-3 rounded-lg text-[var(--color-text-light)] bg-[var(--color-text-dark)] dark:bg-[var(--color-text-light)] dark:text-[var(--color-text-dark)] font-bold text-lg cursor-pointer hover:text-[var(--color-highlight)] dark:hover:text-[var(--color-highlight)]">
+          <p className="text-center p-3 rounded-lg text-[var(--color-text-light)] bg-[var(--color-text-dark)] dark:bg-[var(--color-text-light)] dark:text-[var(--color-text-dark)] font-bold text-lg cursor-pointer hover:text-[var(--color-highlight)] dark:hover:text-[var(--color-highlight)]">
             Read More
           </p>
         </Link>
