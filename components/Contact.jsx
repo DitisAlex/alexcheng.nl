@@ -127,7 +127,7 @@ const Contact = () => {
                       Name
                     </label>
                     <input
-                      className="border-2 rounded-lg p-3 flex border-gray-300"
+                      className="border-2 rounded-lg p-3 flex border-gray-300 dark:text-[var(--color-text-light)]"
                       type="text"
                       name="name"
                       required
@@ -138,7 +138,7 @@ const Contact = () => {
                       E-Mail
                     </label>
                     <input
-                      className="border-2 rounded-lg p-3 flex border-gray-300"
+                      className="border-2 rounded-lg p-3 flex border-gray-300 dark:text-[var(--color-text-light)]"
                       type="email"
                       name="email"
                       required
@@ -150,7 +150,7 @@ const Contact = () => {
                     Subject
                   </label>
                   <input
-                    className="border-2 rounded-lg p-3 flex border-gray-300"
+                    className="border-2 rounded-lg p-3 flex border-gray-300 dark:text-[var(--color-text-light)]"
                     type="text"
                     name="subject"
                     required
@@ -161,7 +161,7 @@ const Contact = () => {
                     Message
                   </label>
                   <textarea
-                    className="border-2 rounded-lg p-3 border-gray-300"
+                    className="border-2 rounded-lg p-3 border-gray-300 dark:text-[var(--color-text-light)]"
                     rows="8"
                     type="text"
                     resize="none"
