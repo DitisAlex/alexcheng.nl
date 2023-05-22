@@ -8,7 +8,7 @@ const laterlezen = () => {
   return (
     <div className="w-full py-16">
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
-        <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/50 z-10"></div>
+        <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/30 z-10"></div>
         <Image
           className="absolute z-1"
           fill
