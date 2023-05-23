@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import placeholderImg from "./../public/assets/logo-dark.png";
+import selfieImg from "./../public/assets/misc/selfie.jpg";
 
 const About = () => {
   return (
@@ -38,7 +38,7 @@ const About = () => {
         </div>
         <div>
           <Image
-            src={placeholderImg}
+            src={selfieImg}
             alt="logo"
             width="500"
             height="500"
