@@ -69,7 +69,7 @@ const sinchen = () => {
         <div className="col-span-4 md:col-span-1 shadow-md shadow-gray-400 rounded-xl p-4">
           <div className="p-2">
             <p className="text-center font-bold pb-2">Tech Stack</p>
-            <div className="grid grid-cols-3 md:grid-cols-1">
+            <div className="grid grid-cols-2 md:grid-cols-1">
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
                 MongoDB
