@@ -1,0 +1,179 @@
+import React from "react";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
+import { MdWork, MdSchool } from "react-icons/md";
+
+const Experience = () => {
+  return (
+    <div id="experience" className="max-w-[1240px] m-auto px-2 pt-32 w-full">
+      <p className="uppercase text-2xl tracking-widest text-[var(--color-primary)]">
+        Experience
+      </p>
+      <h2 className="py-4">What Have I Learned?</h2>
+      <div className="p-4">
+        <VerticalTimeline lineColor={"var(--color-secondary)"}>
+          <VerticalTimelineElement
+            className="vertical-timeline-element"
+            contentStyle={{ background: "var(--color-primary)" }}
+            contentArrowStyle={{
+              borderRight: "10px solid var(--color-primary)",
+            }}
+            date="Feb 2023 - Present"
+            dateClassName="date"
+            icon={<MdSchool />}
+            iconClassName="icon"
+          >
+            <h3 className="vertical-timeline-element-title">Minor GAME</h3>
+            <h4 className="vertical-timeline-element-subtitle">
+              HAN University of Applied Sciences, Arnhem
+            </h4>
+            <p>
+              During this minor, I primarily learned how to work with Unity and
+              how to establish a company to develop an actual game.
+            </p>
+          </VerticalTimelineElement>
+          <VerticalTimelineElement
+            className="vertical-timeline-element"
+            contentStyle={{ background: "var(--color-primary)" }}
+            contentArrowStyle={{
+              borderRight: "10px solid var(--color-primary)",
+            }}
+            date="Aug 2021 - Feb 2022"
+            dateClassName="date"
+            icon={<MdWork />}
+            iconClassName="icon"
+          >
+            <h3 className="vertical-timeline-element-title">
+              Front-End Developer (Internship)
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle">
+              a&m impact, Doetinchem
+            </h4>
+            <p>
+              At my internship, my primary focus was on developing their main
+              application, an intranet specifically designed for individuals in
+              the healthcare sector.
+            </p>
+            <p>
+              The key aspect of this experience was customizing each component
+              according to the specific requirements and preferences of the
+              clients, which provided me with valuable experience in creating
+              custom components using Vue.js and SASS.
+            </p>
+          </VerticalTimelineElement>
+          <VerticalTimelineElement
+            className="vertical-timeline-element"
+            contentStyle={{ background: "var(--color-primary)" }}
+            contentArrowStyle={{
+              borderRight: "10px solid var(--color-primary)",
+            }}
+            date="Aug 2019 - Present"
+            dateClassName="date"
+            icon={<MdSchool />}
+            iconClassName="icon"
+          >
+            <h3 className="vertical-timeline-element-title">
+              HBO-ICT (Web Development)
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle">
+              HAN University of Applied Sciences, Arnhem
+            </h4>
+            <p>
+              Throughout my study, I've had the opportunity to learn a wide
+              range of valueable skills.
+            </p>
+            <p>
+              These include, but are not limited to: Software Development,
+              Object-Oriented Programming, Embedded Software, Database
+              Management, and, of course, Web Development.
+            </p>
+          </VerticalTimelineElement>
+          <VerticalTimelineElement
+            className="vertical-timeline-element"
+            contentStyle={{ background: "var(--color-primary)" }}
+            contentArrowStyle={{
+              borderRight: "10px solid var(--color-primary)",
+            }}
+            date="Dec 2015 - Present"
+            dateClassName="date"
+            icon={<MdWork />}
+            iconClassName="icon"
+          >
+            <h3 className="vertical-timeline-element-title">
+              Restaurant Employee
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle">
+              Sin Chen, Zeddam
+            </h4>
+            <p>
+              Currently, I am employed at a Chinese restaurant called Sin Chen.
+              Within Sin Chen, I have a range of responsibilities that include
+              serving guests, preparing the buffet, supervising other employees,
+              and managing my own ordering application.
+            </p>
+            <p>Read more about my ordering application below!</p>
+          </VerticalTimelineElement>
+          <VerticalTimelineElement
+            className="vertical-timeline-element"
+            contentStyle={{ background: "var(--color-primary)" }}
+            contentArrowStyle={{
+              borderRight: "10px solid var(--color-primary)",
+            }}
+            date="2015 - 2019"
+            dateClassName="date"
+            icon={<MdSchool />}
+            iconClassName="icon"
+          >
+            <h3 className="vertical-timeline-element-title">
+              Havo (Economie & Maatschappij)
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle">
+              Ulenhof College, Doetinchem
+            </h4>
+            <p>
+              I successfully completed Havo and went the extra mile by taking an
+              additional Vwo subject, as I initially intended to continue my
+              studies at the secondary school level.
+            </p>
+            <p>
+              It's worth noting that I accomplished all of this by the age of
+              16!
+            </p>
+          </VerticalTimelineElement>
+          <VerticalTimelineElement
+            className="vertical-timeline-element"
+            contentStyle={{ background: "var(--color-primary)" }}
+            contentArrowStyle={{
+              borderRight: "10px solid var(--color-primary)",
+            }}
+            date="2008 - 2016"
+            dateClassName="date"
+            icon={<MdSchool />}
+            iconClassName="icon"
+          >
+            <h3 className="vertical-timeline-element-title">
+              Chinese School (HSK Level 3)
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle">
+              Stichting Chinese School Arnhem, Arnhem
+            </h4>
+            <p>
+              I used to attend Chinese school every Saturday evening, which
+              provided me with the opportunity to enhance my Chinese language
+              skills, including speaking, grammar, and even calligraphy.
+            </p>
+            <p>
+              Additionally, I completed both the HSK Level 2 and Level 3 exams,
+              further demonstrating my proficiency in the Chinese language.
+            </p>
+          </VerticalTimelineElement>
+        </VerticalTimeline>
+      </div>
+    </div>
+  );
+};
+
+export default Experience;

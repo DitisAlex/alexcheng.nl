@@ -16,14 +16,12 @@
         */
         --color-bg-light: #FFFDFA;
         --color-text-light: #333333;
-        --color-text-secondary-light: #474747;
 
         /*
         / Dark mode colors
         */
         --color-bg-dark: #141414;
         --color-text-dark: #FFFDFA;
-        --color-text-secondary-dark: #CED4DA;
     }
 
     [class='light']{
@@ -46,7 +44,6 @@
     h1, h2, h3, h4, h5, h6 {
         @apply font-bold
     }
-    
 
     h1 {
         @apply text-4xl sm:text-5xl md:text-6xl
@@ -66,5 +63,17 @@
 
     textarea {
         resize: none
+    }
+
+    .vertical-timeline-element{
+        @apply text-[var(--color-text-dark)] dark:text-[var(--color-text-light)] 
+    }
+
+    .date {
+        @apply text-[var(--color-text-dark)] dark:text-[var(--color-text-light)] lg:text-[var(--color-text-light)] lg:dark:text-[var(--color-text-dark)]
+    }
+
+    .icon {
+        @apply bg-[var(--color-secondary)] text-[var(--color-text-dark)] dark:text-[var(--color-text-light)]
     }
 }
