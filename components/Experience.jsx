@@ -13,8 +13,8 @@ const Experience = () => {
         Experience
       </p>
       <h2 className="py-4">What Have I Learned?</h2>
-      <div className="p-4">
-        <VerticalTimeline lineColor={"var(--color-secondary)"}>
+      <div className="overflow-hidden md:overflow-visible md:py-4">
+        <VerticalTimeline className="vertical-timeline" lineColor={"var(--color-secondary)"}>
           <VerticalTimelineElement
             className="vertical-timeline-element"
             contentStyle={{ background: "var(--color-primary)" }}
