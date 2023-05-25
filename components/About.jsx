@@ -36,13 +36,13 @@ const About = () => {
             </p>
           </Link>
         </div>
-        <div>
+        <div className="py-20">
           <Image
             src={selfieImg}
             alt="logo"
             width="500"
             height="500"
-            className="w-1/2 md:w-full h-auto m-auto shadow-lg shadow-gray-400 rounded-full flex items-center justify-center p-4 hover:scale-110 ease-in duration-300"
+            className="w-3/4 md:w-full h-auto m-auto shadow-lg shadow-gray-400 rounded-full flex items-center justify-center p-4 hover:scale-110 ease-in duration-300"
           />
         </div>
       </div>
