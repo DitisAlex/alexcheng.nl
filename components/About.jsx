@@ -36,7 +36,7 @@ const About = () => {
             </p>
           </Link>
         </div>
-        <div className="py-20">
+        <div className="py-20 md:py-0">
           <Image
             src={selfieImg}
             alt="logo"
