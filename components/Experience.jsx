@@ -14,14 +14,46 @@ const Experience = () => {
       </p>
       <h2 className="py-4">What Have I Learned?</h2>
       <div className="overflow-hidden md:overflow-visible md:py-4">
-        <VerticalTimeline className="vertical-timeline" lineColor={"var(--color-secondary)"}>
+        <VerticalTimeline
+          className="vertical-timeline"
+          lineColor={"var(--color-secondary)"}
+        >
           <VerticalTimelineElement
             className="vertical-timeline-element"
             contentStyle={{ background: "var(--color-primary)" }}
             contentArrowStyle={{
               borderRight: "10px solid var(--color-primary)",
             }}
-            date="Feb 2023 - Present"
+            date="Aug 2023 - Jan 2024"
+            dateClassName="date"
+            icon={<MdSchool />}
+            iconClassName="icon"
+          >
+            <h3 className="vertical-timeline-element-title">
+              Front-End Developer (Graduation Internship)
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle">
+              Webbio, Nijmegen
+            </h4>
+            <p>
+              For my graduation project at Webbio, I developed a web application
+              that allows employees to submit sensitive information securely to
+              their customers, such as government agencies.
+            </p>
+            <p>
+              I learned a lot about the importance of security, encryption and
+              privacy, as well as how to implement these concepts in a web
+              application.
+            </p>
+            <p>Read more about this project in the "Projects" section below!</p>
+          </VerticalTimelineElement>
+          <VerticalTimelineElement
+            className="vertical-timeline-element"
+            contentStyle={{ background: "var(--color-primary)" }}
+            contentArrowStyle={{
+              borderRight: "10px solid var(--color-primary)",
+            }}
+            date="Feb 2023 - Jun 2023"
             dateClassName="date"
             icon={<MdSchool />}
             iconClassName="icon"
@@ -97,7 +129,7 @@ const Experience = () => {
             contentArrowStyle={{
               borderRight: "10px solid var(--color-primary)",
             }}
-            date="Dec 2015 - Present"
+            date="Dec 2015 - Dec 2023"
             dateClassName="date"
             icon={<MdWork />}
             iconClassName="icon"
@@ -109,10 +141,10 @@ const Experience = () => {
               Sin Chen, Zeddam
             </h4>
             <p>
-              Currently, I am employed at a Chinese restaurant called Sin Chen.
-              Within Sin Chen, I have a range of responsibilities that include
-              serving guests, preparing the buffet, supervising other employees,
-              and managing my own ordering application.
+              I worked at a Chinese restaurant called Sin Chen. Within Sin Chen,
+              I had a range of responsibilities that include serving guests,
+              preparing the buffet, supervising other employees, and managing my
+              own ordering application.
             </p>
             <p>Read more about my ordering application below!</p>
           </VerticalTimelineElement>

@@ -5,6 +5,7 @@ import airbnbPng from "../public/assets/projects/airbnb.png";
 import laterlezenPng from "../public/assets/projects/laterlezen.png";
 import sinchenPng from "../public/assets/projects/sinchen.png";
 import captchaSolver from "../public/assets/projects/captcha_solver.jpg";
+import securenotesPng from "../public/assets/projects/securenotes.png";
 
 const Projects = () => {
   return (
@@ -14,6 +15,12 @@ const Projects = () => {
       </p>
       <h2 className="py-4">What Have I Built?</h2>
       <div className="grid md:grid-cols-2 gap-8">
+        <ProjectItem
+          title="SecureNotes"
+          toolstack="T3 Stack / AWS Services / AES-256 / Docker"
+          img={securenotesPng}
+          url="securenotes"
+        />
         <ProjectItem
           title="Inside AirBNB"
           toolstack="React.js / Mapbox.js / Charts.js / ASP.NET Core / Azure Services"
