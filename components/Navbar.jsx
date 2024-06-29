@@ -91,7 +91,7 @@ const Navbar = () => {
           className={
             toggleNav
               ? "fixed right-0 top-0 w-[70%] sm:w-[65%] h-screen bg-[var(--color-bg-light)] dark:bg-[var(--color-bg-dark)] p-10 ease-in duration-300"
-              : "fixed right-[-100%] top-0 p-10 ease-in duration-300"
+              : "fixed right-[-100%] h-screen top-0 p-10 ease-in duration-300"
           }
         >
           <div>
