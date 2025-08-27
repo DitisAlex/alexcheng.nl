@@ -24,6 +24,65 @@ const Experience = () => {
             contentArrowStyle={{
               borderRight: "10px solid var(--color-primary)",
             }}
+            date="Mar 2025 - Aug 2025"
+            dateClassName="date"
+            icon={<MdWork />}
+            iconClassName="icon"
+          >
+            <h3 className="vertical-timeline-element-title">
+              Artificial Intelligence Specialist (Thesis Internship)
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle">
+              Municipality of Amsterdam
+            </h4>
+            <p>
+              During my master thesis internship at the Juridisch Bureau of the
+              Municipality of Amsterdam, I researched how Retrieval-Augmented
+              Generation (RAG) models can be leveraged to improve the efficiency
+              of decision-making on lawyers&rsquo; objections.
+            </p>
+            <p>
+              In this project, I gained hands-on experience with RAG while
+              demonstrating that optimizing embeddings through advanced chunking
+              techniques can significantly enhance model performance.
+              Additionally, I explored strategies to maintain stakeholder trust
+              when integrating AI into legal processes.
+            </p>
+          </VerticalTimelineElement>
+          <VerticalTimelineElement
+            className="vertical-timeline-element"
+            contentStyle={{ background: "var(--color-primary)" }}
+            contentArrowStyle={{
+              borderRight: "10px solid var(--color-primary)",
+            }}
+            date="Sep 2024 - Aug 2025"
+            dateClassName="date"
+            icon={<MdSchool />}
+            iconClassName="icon"
+          >
+            <h3 className="vertical-timeline-element-title">
+              Master Applied Artificial Intelligence
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle">
+              Hogeschool van Amsterdam
+            </h4>
+            <p>
+              One-year masters program focused on both theoretical foundations
+              and practical applications of Artificial Intelligence.
+            </p>
+            <p>
+              I gained expertise in techniques including, but not limited to:
+              Machine Learning, Deep Learning, Reinforcement Learning, Computer
+              Vision, Natural Language Processing, Large Language Models and
+              Data engineering.
+            </p>
+          </VerticalTimelineElement>
+          <VerticalTimelineElement
+            className="vertical-timeline-element"
+            contentStyle={{ background: "var(--color-primary)" }}
+            contentArrowStyle={{
+              borderRight: "10px solid var(--color-primary)",
+            }}
             date="Aug 2023 - Jan 2024"
             dateClassName="date"
             icon={<MdSchool />}
@@ -102,7 +161,7 @@ const Experience = () => {
             contentArrowStyle={{
               borderRight: "10px solid var(--color-primary)",
             }}
-            date="Aug 2019 - Present"
+            date="Aug 2019 - Feb 2024"
             dateClassName="date"
             icon={<MdSchool />}
             iconClassName="icon"
