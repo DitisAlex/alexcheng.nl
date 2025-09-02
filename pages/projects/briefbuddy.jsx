@@ -1,29 +1,30 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import sinchenImg from "../../public/assets/projects/sinchen.png";
+import briefbuddyPng from "../../public/assets/projects/briefbuddy_banner.png";
 import { RiRadioButtonFill } from "react-icons/ri";
 import Head from "next/head";
-const sinchen = () => {
+
+const briefbuddy = () => {
   return (
     <div className="w-full py-16">
       <Head>
-        <title>AC Project | SinChen</title>
+        <title>AC Project | Brief Buddy</title>
       </Head>
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
-        <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/50 z-10"></div>
+        <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/40 z-10"></div>
         <Image
           className="absolute z-1"
           fill
-          objectFit="cover"
-          src={sinchenImg}
-          alt="sinchen"
+          style={{ objectFit: "cover" }}
+          src={briefbuddyPng}
+          alt="briefbuddy"
         />
         <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-[var(--color-text-dark)] z-10 p-2">
-          <h2 className="py-2">SinChen</h2>
+          <h2 className="py-2">Brief Buddy</h2>
           <p>
-            Application to order food and automatically be sent to a Thermal
-            Point of Sale Receipt Printer.
+            An application designed to help government officials simplify
+            letters for citizens with low literacy.
           </p>
         </div>
       </div>
@@ -34,39 +35,35 @@ const sinchen = () => {
           </p>
           <h2 className="py-4">Description</h2>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            This was a personal project that I created for the restaurant where
-            I work. Originally, every employee had to take orders by writing
-            them on paper and physically walking to the kitchen to communicate
-            them. While there are many existing order-taking applications
-            available, they can be quite expensive. So, I took it upon myself to
-            develop an application that allows employees to conveniently take
-            orders using multiple tablets. These orders are then sent to a
-            Thermal POS Receipt Printer, eliminating the need for employees to
-            waste time walking back and forth.
+            This school project, completed during the Master in Applied
+            Artificial Intelligence, was developed for the Municipality of
+            Amsterdam to help government officials simplify their letters for
+            citizens with A1 to B2 language proficiency.
           </p>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            This project was primarily built using the MERN stack. I also
-            implemented passport-jwt for user authorization and Higher-Order
-            Components (HOC) for handling different roles within the user base.
-            For example, employees were given the ability to take orders and
-            view order history, while administrators had the additional
-            capability to manage the items available for ordering
+            The application used Optical Character Recognition (OCR) to extract
+            text from government letters, followed by Natural Language
+            Processing (NLP) techniques to simplify the content. The pipeline
+            included preprocessing, text simplification using Dutch pre-trained
+            language models such as Geitje 7B Ultra and Llama 3.2 3B Instruct,
+            and guardrails to verify model outputs.
           </p>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            By far, the most challenging aspect of this project was establishing
-            communication with the printers. I utilized a POS Printer from Star
-            Micronics, but unfortunately, there were no available
-            documentations. Additionally, I utilized an npm package called
-            'react-to-print' which had printing capabilities, but it was not
-            specifically designed for POS printers. After investing numerous
-            hours into tweaking and customizing my limited resources, I managed
-            to make it work.
+            For training and evaluation, metrics like BLEU, BERTScore, and SARI
+            were applied, with further fine-tuning performed using Low-Rank
+            Adaption (LoRA). The final application featured a React.js frontend
+            and a Flask backend.
           </p>
+          <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
+            Through this project, I learned about the challenges of designing a
+            user-friendly interface for citizens with lower literacy, the
+            complexity of defining what counts as a “difficult” word, and the
+            difficulty of improving already highly optimized Dutch language
+            models.
+          </p>
+
           <Link href="/#projects">
             <button className="px-8 py-2 mt-4 mr-4">Back</button>
-          </Link>
-          <Link href="https://github.com/DitisAlex/SinChen">
-            <button className="px-8 py-2 mt-4">Code</button>
           </Link>
         </div>
         <div className="col-span-4 md:col-span-1 shadow-md shadow-gray-400 rounded-xl p-4">
@@ -75,11 +72,35 @@ const sinchen = () => {
             <div className="grid grid-cols-2 md:grid-cols-1">
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                MongoDB
+                Python
               </p>
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                Express.js
+                Artificial Intelligence
+              </p>
+              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
+                <RiRadioButtonFill className="pr-1" />
+                OCR
+              </p>
+              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
+                <RiRadioButtonFill className="pr-1" />
+                NLP
+              </p>
+              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
+                <RiRadioButtonFill className="pr-1" />
+                Llama 3.2 3B Instruct
+              </p>
+              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
+                <RiRadioButtonFill className="pr-1" />
+                Geitje 7B Ultra
+              </p>
+              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
+                <RiRadioButtonFill className="pr-1" />
+                Low-Rank Adaption
+              </p>
+              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
+                <RiRadioButtonFill className="pr-1" />
+                Flask API
               </p>
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
@@ -87,19 +108,7 @@ const sinchen = () => {
               </p>
               <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
                 <RiRadioButtonFill className="pr-1" />
-                Node.js
-              </p>
-              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                Mongoose
-              </p>
-              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                Passport-jwt
-              </p>
-              <p className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                ReactToPrint
+                Tailwind.CSS
               </p>
             </div>
           </div>
@@ -109,4 +118,4 @@ const sinchen = () => {
   );
 };
 
-export default sinchen;
+export default briefbuddy;

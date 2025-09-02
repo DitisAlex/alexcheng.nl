@@ -6,6 +6,8 @@ import laterlezenPng from "../public/assets/projects/laterlezen.png";
 import sinchenPng from "../public/assets/projects/sinchen.png";
 import captchaSolver from "../public/assets/projects/captcha_solver.jpg";
 import securenotesPng from "../public/assets/projects/securenotes.png";
+import agePredictionPng from "../public/assets/projects/ah_age_prediction.png";
+import briefbuddyPng from "../public/assets/projects/briefbuddy.png";
 
 const Projects = () => {
   return (
@@ -15,6 +17,18 @@ const Projects = () => {
       </p>
       <h2 className="py-4">What Have I Built?</h2>
       <div className="grid md:grid-cols-2 gap-8">
+        <ProjectItem
+          title="AH Age Prediction"
+          toolstack="Python / Artificial Intelligence / DeepFace / WebSockets / React.js"
+          img={agePredictionPng}
+          url="ah_age_prediction"
+        />
+        <ProjectItem
+          title="Brief Buddy"
+          toolstack="Python / Artificial Intelligence / Optical Character Recognition / Natural Language Processing / React.js"
+          img={briefbuddyPng}
+          url="briefbuddy"
+        />
         <ProjectItem
           title="SecureNotes"
           toolstack="T3 Stack / AWS Services / AES-256 / Docker"

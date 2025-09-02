@@ -3,10 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import airbnbImg from "../../public/assets/projects/airbnb.png";
 import { RiRadioButtonFill } from "react-icons/ri";
-
+import Head from "next/head";
 const airbnb = () => {
   return (
     <div className="w-full py-16">
+      <Head>
+        <title>AC Project | Inside AirBNB</title>
+      </Head>
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
         <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/50 z-10"></div>
         <Image

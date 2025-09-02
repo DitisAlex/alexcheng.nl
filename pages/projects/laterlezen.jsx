@@ -3,10 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import laterlezenImg from "../../public/assets/projects/laterlezen.png";
 import { RiRadioButtonFill } from "react-icons/ri";
-
+import Head from "next/head";
 const laterlezen = () => {
   return (
     <div className="w-full py-16">
+      <Head>
+        <title>AC Project | LaterLezen</title>
+      </Head>
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
         <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/30 z-10"></div>
         <Image

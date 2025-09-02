@@ -14,16 +14,17 @@ const About = () => {
           </p>
           <h2 className="py-4">Who Am I?</h2>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            At a very young age, I realized my interest in working with
-            computers and technology in general. So, right after finishing
-            secondary school at the age of 16, I immediately started studying
-            "HBO-ICT" at the HAN University of Applied Sciences.
+            From a young age, I’ve been fascinated by technology, which led me
+            to study HBO-ICT at the HAN University of Applied Sciences. During
+            my studies, I discovered a passion for web development and the
+            creativity it brings through problem-solving and innovation.
           </p>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            During this time, I have learned various technologies, but one has
-            truly stood out to me: web development. I simply love that this
-            career is always centered around creative problem-solving and
-            continuous innovation.
+            After completing my Bachelor’s degree, I began a Master’s in Applied
+            Artificial Intelligence in Amsterdam, with the ambition to combine
+            AI with web development. My focus is on exploring how technologies
+            like large language models and computer vision can create smarter,
+            more adaptive web applications.
           </p>
           <p className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
             Besides that, in my free time, I enjoy activities such as going to

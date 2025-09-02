@@ -12,17 +12,26 @@ const Main = () => {
             Hello, I'm{" "}
             <span className="text-[var(--color-primary)]">Alex Cheng</span>
           </h1>
-          <h1 className="py-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
-            Focused on{" "}
+          <h1 className="py-4 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">
+            Specialized in{" "}
             <span className="text-[var(--color-secondary)]">
               {" "}
               Web Development
+            </span>{" "}
+            and
+            <span className="text-[var(--color-primary)]">
+              {" "}
+              Applied Artificial Intelligence
             </span>
           </h1>
           <p className="py-4 text-[var(--color-text-secondary-light)] dark:text-[var(--color-text-secondary-dark)] max-w-[70%] m-auto">
-            My current interest lies in learning web development, with a
-            specialization in front-end frameworks, while also expanding my
-            knowledge of back-end technologies.
+            I am a web developer focused on creating modern, user-friendly
+            applications with a strong foundation in front-end frameworks and
+            back-end technologies. <br />
+            <br />
+            Alongside my passion for building seamless digital experiences, I am
+            specialized in Applied Artificial Intelligence, with expertise in
+            Large Language Models, Computer Vision, and Data-Driven Solutions.
           </p>
 
           <div className="flex items-center justify-between max-w-[330px] m-auto py-4">

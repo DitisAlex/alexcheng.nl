@@ -3,10 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import securenotesImg from "../../public/assets/projects/securenotes.png";
 import { RiRadioButtonFill } from "react-icons/ri";
-
+import Head from "next/head";
 const securenotes = () => {
   return (
     <div className="w-full py-16">
+      <Head>
+        <title>AC Project | SecureNotes</title>
+      </Head>
       <div className="w-screen h-[30vh] lg:h-[40vh] relative">
         <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/50 z-10"></div>
         <Image
@@ -51,7 +54,7 @@ const securenotes = () => {
             so I learned a lot about the flexibility and power of this cloud
             service provider. Besides that I also learned a lot about the
             importance of security, encryption and privacy, as well as how to
-            implement these concepts in a web application..
+            implement these concepts in a web application.
           </p>
           <Link href="/#projects">
             <button className="px-8 py-2 mt-4 mr-4">Back</button>
