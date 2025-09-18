@@ -8,6 +8,8 @@ import captchaSolver from "../public/assets/projects/captcha_solver.jpg";
 import securenotesPng from "../public/assets/projects/securenotes.png";
 import agePredictionPng from "../public/assets/projects/ah_age_prediction.png";
 import briefbuddyPng from "../public/assets/projects/briefbuddy.png";
+import sinchencmsPng from "../public/assets/projects/sinchen_cms.png";
+import longstayachterhoekPng from "../public/assets/projects/longstayachterhoek.png";
 
 const Projects = () => {
   return (
@@ -24,22 +26,34 @@ const Projects = () => {
           url="ah_age_prediction"
         />
         <ProjectItem
-          title="Brief Buddy"
-          toolstack="Python / Artificial Intelligence / Optical Character Recognition / Natural Language Processing / React.js"
-          img={briefbuddyPng}
-          url="briefbuddy"
-        />
-        <ProjectItem
           title="SecureNotes"
           toolstack="T3 Stack / AWS Services / AES-256 / Docker"
           img={securenotesPng}
           url="securenotes"
         />
         <ProjectItem
-          title="Inside AirBNB"
-          toolstack="React.js / Mapbox.js / Charts.js / ASP.NET Core / Azure Services"
-          img={airbnbPng}
-          url="airbnb"
+          title="Brief Buddy"
+          toolstack="Python / Artificial Intelligence / Optical Character Recognition / Natural Language Processing / React.js"
+          img={briefbuddyPng}
+          url="briefbuddy"
+        />
+        <ProjectItem
+          title="Sin Chen CMS"
+          toolstack="Next.js / Sanity.io / Tailwind.css / TypeScript / Flowbite"
+          img={sinchencmsPng}
+          url="sinchen_cms"
+        />
+        <ProjectItem
+          title="Longstay Achterhoek"
+          toolstack="Next.js / Tailwind.cs / Flowbite / SEO Optimization / Google Analytics"
+          img={longstayachterhoekPng}
+          url="longstayachterhoek"
+        />
+        <ProjectItem
+          title="Sin Chen Order App"
+          toolstack="MongoDB / Express.js / React.js / Node.js / ReactToPrint"
+          img={sinchenPng}
+          url="sinchen"
         />
         <ProjectItem
           title="LaterLezen"
@@ -48,10 +62,10 @@ const Projects = () => {
           url="laterlezen"
         />
         <ProjectItem
-          title="SinChen"
-          toolstack="MongoDB / Express.js / React.js / Node.js / ReactToPrint"
-          img={sinchenPng}
-          url="sinchen"
+          title="Inside AirBNB"
+          toolstack="React.js / Mapbox.js / Charts.js / ASP.NET Core / Azure Services"
+          img={airbnbPng}
+          url="airbnb"
         />
         <ProjectItem
           title="CAPTCHA Solver"
