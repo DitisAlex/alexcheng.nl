@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { AiOutlineMenu, AiOutlineClose, AiFillMail } from "react-icons/ai";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { useTheme } from "next-themes";
 
 const Navbar = () => {
+  const router = useRouter();
   const [toggleNav, setToggleNav] = useState(false);
   const handleToggleNav = () => {
     setToggleNav(!toggleNav);
@@ -20,6 +22,11 @@ const Navbar = () => {
   }, []);
 
   if (!mounted) {
+    return null;
+  }
+
+  // Hide the navbar entirely on the hidden surprise page.
+  if (router.pathname === "/cynthia") {
     return null;
   }
 

@@ -77,3 +77,91 @@
         @apply bg-[var(--color-secondary)] text-[var(--color-text-dark)] dark:text-[var(--color-text-light)]
     }
 }
+
+/*
+/ Animations for the hidden /cynthia date-invite page
+*/
+@keyframes cynthia-float {
+    0%   { transform: translateY(0) rotate(0deg); }
+    50%  { transform: translateY(-22px) rotate(8deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes cynthia-float-slow {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+    50%  { transform: translateY(-40px) rotate(-6deg); opacity: 1; }
+    100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+}
+
+@keyframes cynthia-pop {
+    0%   { transform: scale(0.6); opacity: 0; }
+    60%  { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes cynthia-fade-up {
+    0%   { transform: translateY(24px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes cynthia-flip {
+    0%   { transform: rotateX(0deg); }
+    50%  { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+}
+
+@keyframes cynthia-wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-6deg); }
+    75% { transform: rotate(6deg); }
+}
+
+@keyframes cynthia-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+}
+
+@keyframes cynthia-confetti-fall {
+    0%   { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes cynthia-heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.15); }
+    50% { transform: scale(0.95); }
+    75% { transform: scale(1.1); }
+}
+
+@keyframes cynthia-gradient {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.cynthia-anim-float       { animation: cynthia-float 4s ease-in-out infinite; }
+.cynthia-anim-float-slow  { animation: cynthia-float-slow 6s ease-in-out infinite; }
+.cynthia-anim-pop         { animation: cynthia-pop 0.5s ease-out both; }
+.cynthia-anim-fade-up     { animation: cynthia-fade-up 0.6s ease-out both; }
+.cynthia-anim-flip        { animation: cynthia-flip 0.5s ease both; }
+.cynthia-anim-wiggle      { animation: cynthia-wiggle 0.6s ease-in-out; }
+.cynthia-anim-shake       { animation: cynthia-shake 0.5s ease-in-out; }
+.cynthia-anim-heartbeat   { animation: cynthia-heartbeat 1.4s ease-in-out infinite; }
+
+.cynthia-bg {
+    background: linear-gradient(135deg, #ffe3ec 0%, #ffc2d4 25%, #ff8fab 55%, #ff5d8f 100%);
+    background-size: 300% 300%;
+    animation: cynthia-gradient 14s ease infinite;
+}
+
+.cynthia-confetti-piece {
+    position: absolute;
+    top: -10vh;
+    width: 10px;
+    height: 14px;
+    border-radius: 2px;
+    animation: cynthia-confetti-fall linear forwards;
+}
