@@ -40,6 +40,101 @@ const KEY_ROWS = [
 const CONFETTI_COLORS = ["#ff5d8f", "#ff8fab", "#ffc2d4", "#ffd6e0", "#ff3d6e", "#ffeb3b"];
 
 /* ------------------------------------------------------------------ */
+/*  Cross Math puzzle (crossword-style, 5x5). Left-to-right eval.      */
+/*                                                                     */
+/*   2 × 3 = 6                                                         */
+/*   +   −   +                                                         */
+/*   6 ÷ 2 = 3                                                         */
+/*   =   =   =                                                         */
+/*   8 + 1 = 9                                                         */
+/* ------------------------------------------------------------------ */
+
+const CM_SIZE = 5;
+
+// Number cells: "row-col" -> { value, given }. Blanks have given:false.
+const CM_NUMBERS = {
+  "0-0": { value: 2, given: false },
+  "0-2": { value: 3, given: true },
+  "0-4": { value: 6, given: true },
+  "2-0": { value: 6, given: true },
+  "2-2": { value: 2, given: false },
+  "2-4": { value: 3, given: false },
+  "4-0": { value: 8, given: false },
+  "4-2": { value: 1, given: true },
+  "4-4": { value: 9, given: false },
+};
+
+// Operator cells (row operators + column operators).
+const CM_OPS = {
+  "0-1": "×",
+  "2-1": "÷",
+  "4-1": "+",
+  "1-0": "+",
+  "1-2": "−",
+  "1-4": "+",
+};
+
+const CM_EQUALS = ["0-3", "2-3", "4-3", "3-0", "3-2", "3-4"];
+
+// Numbers she places into the blanks (matches the 5 blank cells above).
+const CM_POOL = [2, 2, 3, 8, 9];
+
+const CM_EQUATIONS = [
+  { a: "0-0", op: "×", b: "0-2", r: "0-4" },
+  { a: "2-0", op: "÷", b: "2-2", r: "2-4" },
+  { a: "4-0", op: "+", b: "4-2", r: "4-4" },
+  { a: "0-0", op: "+", b: "2-0", r: "4-0" },
+  { a: "0-2", op: "−", b: "2-2", r: "4-2" },
+  { a: "0-4", op: "+", b: "2-4", r: "4-4" },
+];
+
+const applyOp = (x, op, y) => {
+  switch (op) {
+    case "+":
+      return x + y;
+    case "−":
+      return x - y;
+    case "×":
+      return x * y;
+    case "÷":
+      return y !== 0 ? x / y : NaN;
+    default:
+      return NaN;
+  }
+};
+
+/* ------------------------------------------------------------------ */
+/*  "Select Fufu" image captcha                                        */
+/* ------------------------------------------------------------------ */
+
+const FUFU_IMAGES = [
+  "/assets/fufu/IMG_8552.png",
+  "/assets/fufu/IMG_8553.png",
+  "/assets/fufu/IMG_8554.png",
+];
+
+// Look-alike tabby cats that are NOT Fufu.
+const FUFU_DECOYS = [
+  "/assets/fufu-decoys/decoy1.jpg",
+  "/assets/fufu-decoys/decoy2.jpg",
+  "/assets/fufu-decoys/decoy3.jpg",
+  "/assets/fufu-decoys/decoy4.jpg",
+  "/assets/fufu-decoys/decoy5.jpg",
+  "/assets/fufu-decoys/decoy6.jpg",
+];
+
+const shuffle = (arr) => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+
+
+
+/* ------------------------------------------------------------------ */
 /*  Helpers                                                           */
 /* ------------------------------------------------------------------ */
 
@@ -87,9 +182,12 @@ const tileColor = (status) => {
 
 const Cynthia = () => {
   const [mounted, setMounted] = useState(false);
-  const [step, setStep] = useState("invite"); // invite | wordle | picker | done
+  const [step, setStep] = useState("invite"); // invite | wordle | crossmath | fufu | picker | done
 
   useEffect(() => setMounted(true), []);
+
+  const gameIndex = { wordle: 1, crossmath: 2, fufu: 3 }[step];
+  const isGame = Boolean(gameIndex);
 
   return (
     <div className="cynthia-bg relative min-h-screen w-full overflow-hidden flex items-center justify-center px-4 py-10 text-pink-900">
@@ -114,18 +212,33 @@ const Cynthia = () => {
         </span>
       ))}
 
-      <div className="relative z-10 w-full max-w-3xl">
+      <div
+        className={`relative z-10 w-full ${isGame ? "max-w-5xl" : "max-w-3xl"}`}
+      >
+        {isGame && <GameProgress current={gameIndex} />}
         {step === "invite" && <InviteStep onYes={() => setStep("wordle")} />}
         {step === "wordle" && (
           <WordleStep
-            onSolved={() => setStep("picker")}
+            onSolved={() => setStep("crossmath")}
             onBack={() => setStep("invite")}
+          />
+        )}
+        {step === "crossmath" && (
+          <CrossMathStep
+            onSolved={() => setStep("fufu")}
+            onBack={() => setStep("wordle")}
+          />
+        )}
+        {step === "fufu" && (
+          <FufuStep
+            onSolved={() => setStep("picker")}
+            onBack={() => setStep("crossmath")}
           />
         )}
         {step === "picker" && (
           <PickerStep
             onDone={() => setStep("done")}
-            onBack={() => setStep("wordle")}
+            onBack={() => setStep("fufu")}
           />
         )}
         {step === "done" && <DoneStep mounted={mounted} />}
@@ -149,6 +262,31 @@ const BackButton = ({ onClick }) => (
   >
     ←
   </button>
+);
+
+/* ------------------------------------------------------------------ */
+/*  Shared — game progress bar                                        */
+/* ------------------------------------------------------------------ */
+
+const GameProgress = ({ current, total = 3 }) => (
+  <div className="cynthia-anim-fade-up mx-auto mb-4 w-full max-w-md">
+    <div className="mb-1.5 flex items-center justify-between text-sm font-bold text-pink-700">
+      <span>
+        Spelletje {current}/{total}
+      </span>
+      <span className="tracking-widest">
+        {Array.from({ length: total })
+          .map((_, i) => (i < current ? "💗" : "🤍"))
+          .join(" ")}
+      </span>
+    </div>
+    <div className="h-3 w-full overflow-hidden rounded-full bg-white/70 shadow-inner">
+      <div
+        className="h-full rounded-full bg-gradient-to-r from-pink-500 to-rose-500 transition-all duration-700 ease-out"
+        style={{ width: `${(current / total) * 100}%` }}
+      />
+    </div>
+  </div>
 );
 
 /* ------------------------------------------------------------------ */
@@ -322,7 +460,7 @@ const WordleStep = ({ onSolved, onBack }) => {
             {row.letters.map((ch, ci) => (
               <div
                 key={ci}
-                className={`flex h-14 w-14 items-center justify-center rounded-xl border-2 text-2xl font-extrabold uppercase transition-all duration-300 ${tileColor(
+                className={`flex h-16 w-16 items-center justify-center rounded-xl border-2 text-3xl font-extrabold uppercase transition-all duration-300 ${tileColor(
                   row.statuses[ci]
                 )} ${row.submitted ? "cynthia-anim-flip" : ch ? "cynthia-anim-pop" : ""}`}
                 style={row.submitted ? { animationDelay: `${ci * 0.1}s` } : undefined}
@@ -337,14 +475,13 @@ const WordleStep = ({ onSolved, onBack }) => {
       {/* Status messages */}
       {won && (
         <p className="cynthia-anim-pop mb-4 text-xl font-bold text-rose-500">
-          Ja! Dat is echt Cynthia 💍✨ Door naar de leukste stap...
+          Ja! Dat is echt Cynthia 💍✨ Door naar het volgende spelletje...
         </p>
       )}
       {lost && (
         <p className="mb-4 text-lg font-semibold text-pink-600">
-          Bijna! Het woord was{" "}
-          <span className="font-extrabold text-rose-500">{TARGET}</span> 💍 — probeer
-          opnieuw lieverd.
+          Bijna! Nog een keertje proberen? Jij kan dit lieverd 💍 — probeer
+          opnieuw.
         </p>
       )}
 
@@ -405,7 +542,404 @@ const WordleStep = ({ onSolved, onBack }) => {
 };
 
 /* ------------------------------------------------------------------ */
-/*  Step 3 — Date & preferences picker                                */
+/*  Step 3 — Cross Math puzzle                                         */
+/* ------------------------------------------------------------------ */
+
+const CrossMathStep = ({ onSolved, onBack }) => {
+  const [placements, setPlacements] = useState({}); // cellKey -> pool index
+  const [selected, setSelected] = useState(null);
+  const [won, setWon] = useState(false);
+  const [shake, setShake] = useState(false);
+
+  const blanks = useMemo(
+    () => Object.keys(CM_NUMBERS).filter((k) => !CM_NUMBERS[k].given),
+    []
+  );
+
+  const valAt = (key, pl) => {
+    const cell = CM_NUMBERS[key];
+    if (!cell) return null;
+    if (cell.given) return cell.value;
+    const idx = pl[key];
+    return idx != null ? CM_POOL[idx] : null;
+  };
+
+  const placeNumber = (poolIdx) => {
+    if (won) return;
+    setPlacements((prev) => {
+      const target = selected || blanks.find((k) => prev[k] == null);
+      if (!target) return prev;
+      const next = {};
+      Object.keys(prev).forEach((k) => {
+        if (prev[k] !== poolIdx) next[k] = prev[k];
+      });
+      next[target] = poolIdx;
+      return next;
+    });
+    setSelected(null);
+  };
+
+  const clickCell = (key) => {
+    if (won) return;
+    const cell = CM_NUMBERS[key];
+    if (!cell || cell.given) return;
+    setPlacements((prev) => {
+      if (prev[key] == null) return prev;
+      const next = { ...prev };
+      delete next[key];
+      return next;
+    });
+    setSelected(key);
+  };
+
+  // Auto-check whenever every blank is filled.
+  useEffect(() => {
+    const allFilled = blanks.every((k) => placements[k] != null);
+    if (!allFilled) return;
+    const ok = CM_EQUATIONS.every(
+      (eq) =>
+        applyOp(valAt(eq.a, placements), eq.op, valAt(eq.b, placements)) ===
+        valAt(eq.r, placements)
+    );
+    if (ok) {
+      setWon(true);
+    } else {
+      setShake(true);
+      const t = setTimeout(() => setShake(false), 600);
+      return () => clearTimeout(t);
+    }
+  }, [placements, blanks]);
+
+  // Advance after solving.
+  useEffect(() => {
+    if (!won) return;
+    const t = setTimeout(onSolved, 3000);
+    return () => clearTimeout(t);
+  }, [won, onSolved]);
+
+  const reset = () => {
+    setPlacements({});
+    setSelected(null);
+    setWon(false);
+  };
+
+  const usedPool = new Set(Object.values(placements));
+
+  const renderCell = (key) => {
+    const num = CM_NUMBERS[key];
+    if (num) {
+      const v = valAt(key, placements);
+      if (num.given) {
+        return (
+          <div
+            key={key}
+            className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-pink-400 to-rose-500 text-2xl font-extrabold text-white shadow-md"
+          >
+            {num.value}
+          </div>
+        );
+      }
+      const isSel = selected === key;
+      return (
+        <button
+          key={key}
+          type="button"
+          onClick={() => clickCell(key)}
+          className={`flex h-16 w-16 items-center justify-center rounded-xl border-2 text-2xl font-extrabold transition-all ${
+            isSel
+              ? "border-rose-400 bg-rose-50 ring-2 ring-rose-300 !text-rose-600"
+              : v != null
+              ? "border-pink-300 bg-white !text-pink-600"
+              : "cynthia-anim-heartbeat border-dashed border-pink-300 bg-pink-50/70 !text-pink-400"
+          }`}
+        >
+          {v != null ? v : ""}
+        </button>
+      );
+    }
+    if (CM_OPS[key]) {
+      return (
+        <div
+          key={key}
+          className="flex h-16 w-16 items-center justify-center text-3xl font-bold text-rose-400"
+        >
+          {CM_OPS[key]}
+        </div>
+      );
+    }
+    if (CM_EQUALS.includes(key)) {
+      return (
+        <div
+          key={key}
+          className="flex h-16 w-16 items-center justify-center text-3xl font-bold text-rose-400"
+        >
+          =
+        </div>
+      );
+    }
+    return <div key={key} className="h-16 w-16" />;
+  };
+
+  const cells = [];
+  for (let r = 0; r < CM_SIZE; r++) {
+    for (let c = 0; c < CM_SIZE; c++) {
+      cells.push(renderCell(`${r}-${c}`));
+    }
+  }
+
+  return (
+    <div className="cynthia-anim-fade-up relative rounded-3xl bg-white/80 p-8 text-center shadow-2xl shadow-pink-300/50 backdrop-blur-md">
+      {!won && <BackButton onClick={onBack} />}
+      <div className="mb-1 text-5xl">🧮</div>
+      <h2 className="mb-1 text-2xl font-extrabold text-pink-600 sm:text-3xl">
+        Reken-kruiswoord 💕
+      </h2>
+      <p className="mb-6 text-pink-700">
+        Tik op een leeg vakje en kies dan een getal, zodat élke som klopt (van
+        links naar rechts) 🥰
+      </p>
+
+      <div
+        className={`mx-auto mb-6 grid w-fit gap-1.5 ${
+          shake ? "cynthia-anim-shake" : ""
+        }`}
+        style={{ gridTemplateColumns: `repeat(${CM_SIZE}, 4rem)` }}
+      >
+        {cells}
+      </div>
+
+      {won ? (
+        <p className="cynthia-anim-pop mb-2 text-xl font-bold text-rose-500">
+          Helemaal goed! Wat ben jij slim 🥰💕 Door naar het volgende spelletje...
+        </p>
+      ) : (
+        <>
+          <p className="mb-2 text-sm font-semibold text-pink-600">Kies een getal:</p>
+          <div className="mb-6 flex flex-wrap items-center justify-center gap-2">
+            {CM_POOL.map((val, idx) => {
+              const used = usedPool.has(idx);
+              return (
+                <button
+                  key={idx}
+                  type="button"
+                  disabled={used}
+                  onClick={() => placeNumber(idx)}
+                  className={`normal-case flex h-12 w-12 items-center justify-center rounded-xl text-xl font-extrabold shadow-md transition-transform ${
+                    used
+                      ? "cursor-default bg-pink-100 !text-pink-300 opacity-50"
+                      : "bg-gradient-to-br from-pink-500 to-rose-500 !text-white hover:scale-110 hover:!text-white"
+                  }`}
+                >
+                  {val}
+                </button>
+              );
+            })}
+          </div>
+          <button
+            type="button"
+            onClick={reset}
+            className="normal-case rounded-full bg-white px-6 py-2.5 text-sm font-semibold !text-rose-500 shadow-md shadow-pink-200 transition-transform hover:scale-105 hover:!text-rose-500"
+          >
+            🔁 Opnieuw
+          </button>
+        </>
+      )}
+    </div>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/*  Step 4 — "Select Fufu" image captcha                              */
+/* ------------------------------------------------------------------ */
+
+const FufuStep = ({ onSolved, onBack }) => {
+  // Build & shuffle the 9 tiles once, on the client, when this step mounts.
+  const [tiles, setTiles] = useState([]);
+  const [selected, setSelected] = useState(() => new Set());
+  const [won, setWon] = useState(false);
+  const [shake, setShake] = useState(false);
+  const [tries, setTries] = useState(0);
+  const [zoomSrc, setZoomSrc] = useState(null);
+
+  const buildTiles = () =>
+    shuffle([
+      ...FUFU_IMAGES.map((src) => ({ src, isFufu: true })),
+      ...FUFU_DECOYS.map((src) => ({ src, isFufu: false })),
+    ]);
+
+  useEffect(() => {
+    setTiles(buildTiles());
+  }, []);
+
+  const toggle = (i) => {
+    if (won) return;
+    setSelected((prev) => {
+      const next = new Set(prev);
+      next.has(i) ? next.delete(i) : next.add(i);
+      return next;
+    });
+  };
+
+  const verify = () => {
+    const picked = [...selected];
+    const correct =
+      picked.length === 3 && picked.every((i) => tiles[i]?.isFufu);
+    if (correct) {
+      setWon(true);
+    } else {
+      setShake(true);
+      setTries((t) => t + 1);
+      setTimeout(() => setShake(false), 600);
+      setSelected(new Set());
+    }
+  };
+
+  const refresh = () => {
+    setTiles(buildTiles());
+    setSelected(new Set());
+  };
+
+  // Advance after solving.
+  useEffect(() => {
+    if (!won) return;
+    const t = setTimeout(onSolved, 2600);
+    return () => clearTimeout(t);
+  }, [won, onSolved]);
+
+  return (
+    <div className="cynthia-anim-fade-up relative rounded-3xl bg-white/80 p-8 text-center shadow-2xl shadow-pink-300/50 backdrop-blur-md">
+      {!won && <BackButton onClick={onBack} />}
+
+      {/* Captcha header bar */}
+      <div className="mx-auto mb-5 max-w-md overflow-hidden rounded-2xl shadow-md">
+        <div className="bg-gradient-to-r from-pink-500 to-rose-500 px-5 py-4 text-left text-white">
+          <p className="text-sm uppercase tracking-widest opacity-90">Selecteer alle</p>
+          <p className="text-2xl font-extrabold">foto&apos;s van Fufu 🐱</p>
+        </div>
+      </div>
+
+      <p className="mb-5 text-pink-700">
+        Klik op de 3 plaatjes van jouw kindje Fufu 💕
+      </p>
+
+      {/* 3x3 image grid */}
+      <div
+        className={`mx-auto mb-5 grid w-fit grid-cols-3 gap-3 ${
+          shake ? "cynthia-anim-shake" : ""
+        }`}
+      >
+        {tiles.map((tile, i) => {
+          const isSel = selected.has(i);
+          return (
+            <div
+              key={i}
+              role="button"
+              tabIndex={0}
+              onClick={() => toggle(i)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  toggle(i);
+                }
+              }}
+              className={`group relative h-40 w-40 cursor-pointer overflow-hidden rounded-2xl border-4 shadow-sm transition-all duration-150 hover:scale-[1.03] ${
+                isSel ? "border-rose-500" : "border-transparent"
+              }`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={tile.src}
+                alt="kat"
+                className="h-full w-full object-cover"
+              />
+              {/* Zoom button — appears on hover */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setZoomSrc(tile.src);
+                }}
+                aria-label="Vergroot foto"
+                className="normal-case absolute bottom-2 left-2 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-base !text-rose-500 opacity-0 shadow-md transition-opacity duration-150 hover:scale-110 hover:!text-rose-500 group-hover:opacity-100"
+              >
+                🔍
+              </button>
+              {isSel && (
+                <span className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-rose-500 text-base font-bold text-white shadow">
+                  ✓
+                </span>
+              )}
+              {isSel && <span className="pointer-events-none absolute inset-0 bg-rose-500/20" />}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Zoom lightbox overlay */}
+      {zoomSrc && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6 backdrop-blur-sm"
+          onClick={() => setZoomSrc(null)}
+        >
+          <div className="relative" onClick={(e) => e.stopPropagation()}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={zoomSrc}
+              alt="kat groot"
+              className="max-h-[80vh] max-w-[80vw] rounded-3xl border-4 border-white object-contain shadow-2xl"
+            />
+            <button
+              type="button"
+              onClick={() => setZoomSrc(null)}
+              aria-label="Sluiten"
+              className="normal-case absolute -right-3 -top-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg font-bold !text-rose-500 shadow-lg transition-transform hover:scale-110 hover:!text-rose-500"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+
+      {won ? (
+        <p className="cynthia-anim-pop mb-2 text-xl font-bold text-rose-500">
+          Dat is Fufu! 🐱💕 Geverifieerd — door naar de laatste stap...
+        </p>
+      ) : (
+        <>
+          {tries > 0 && (
+            <p className="mb-3 text-sm font-semibold text-pink-600">
+              Hmm, dat waren niet (alleen) foto&apos;s van Fufu! Probeer opnieuw 💗
+            </p>
+          )}
+          <div className="flex items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={refresh}
+              className="normal-case rounded-full bg-white px-5 py-2.5 text-sm font-semibold !text-rose-500 shadow-md shadow-pink-200 transition-transform hover:scale-105 hover:!text-rose-500"
+            >
+              🔁 Husselen
+            </button>
+            <button
+              type="button"
+              onClick={verify}
+              disabled={selected.size === 0}
+              className={`normal-case rounded-full px-8 py-2.5 text-sm font-bold !text-white shadow-md transition-transform hover:!text-white ${
+                selected.size === 0
+                  ? "cursor-not-allowed bg-pink-300"
+                  : "bg-gradient-to-r from-pink-500 to-rose-500 shadow-pink-300 hover:scale-105"
+              }`}
+            >
+              Verifiëren
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/*  Step 5 — Date & preferences picker                                */
 /* ------------------------------------------------------------------ */
 
 const PickerStep = ({ onDone, onBack }) => {
